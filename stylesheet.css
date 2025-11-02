@@ -1,0 +1,564 @@
+/* ==========================
+   RESET & BODY
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 16px; /* dasar font rem */
+}
+
+body {
+    color: #fff;
+    background-color: #00001f;
+    line-height: 1.6;
+}
+
+/* ==========================
+   HEADER & LOGO
+========================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.3rem 8%;
+    background: #00001f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+    gap: 1.3rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: default;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar {
+    display: flex;
+    justify-content: center;    /* teks sejajar horizontal */
+    align-items: center;
+    gap: 1.5rem;                /* jarak antar menu */
+    flex-wrap: nowrap;          /* jangan turun baris di layar besar */
+}
+
+.navbar a {
+    position: relative;
+    display: inline-block;
+    font-size: 1.3rem;            /* ukuran pas di desktop */
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* 🔹 Efek garis bawah muncul dari tengah */
+.navbar a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: #00fff7;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+/* 🔹 Saat hover */
+.navbar a:hover {
+    color: #00fff7;
+}
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* 🔹 Delay animasi saat muncul */
+.navbar a:nth-child(1) { animation-delay: 0.2s; }
+.navbar a:nth-child(2) { animation-delay: 0.4s; }
+.navbar a:nth-child(3) { animation-delay: 0.6s; }
+.navbar a:nth-child(4) { animation-delay: 0.8s; }
+.navbar a:nth-child(5) { animation-delay: 1s; }
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hapus garis bawah di bagian Portfolio */
+.portfolio .heading::after {
+    display: none;
+}
+
+/* ==========================
+   PROFILE IMAGE
+========================== */
+.profile-img {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    display: block;
+    margin-left: 1rem;
+    background: linear-gradient(45deg, #00fff7, #ff00f7);
+    padding: 0.3rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 1.5rem #fff;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-img:hover {
+    background: linear-gradient(45deg, #ff00f7, #00fff7);
+    box-shadow: 0 0 2rem #00fff7, 0 0 3rem #00fff7;
+    cursor: pointer;
+}
+
+/* ==========================
+   HOME SECTION
+========================== */
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('imageview.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 10%;
+    flex-wrap: wrap;
+}
+
+.home-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.home-content span { color: #00fff7; }
+
+.text-content {
+    color: #fff;
+    flex: 1;
+    text-align: center; /* ✅ tambahan penting untuk posisi tengah */
+}
+
+.text-content h3 {
+    font-size: 1.625rem;
+    font-weight: 700;
+    margin-bottom: 0.125rem;
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 0.7s;
+}
+
+.text-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.125rem 0;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.text-content p {
+    font-size: 1.375rem;
+    margin: 0.25rem 0;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+/* ==========================
+   SOCIAL ICONS
+========================== */
+.home-sci {
+    display: flex;                     /* untuk barisan ikon */
+    justify-content: center;           /* ikon di tengah horizontal */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin: 1rem auto 0;              /* auto = rata tengah */
+    width: fit-content;               /* lebar mengikuti isi */
+}
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: transparent;
+    border: 2px solid #00fff7;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    color: #00fff7;
+    text-decoration: none;
+    transition: 0.5s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(0.2s * var(--i));
+}
+
+.home-sci a:hover {
+    background: #00fff7;
+    color: #080908;
+    box-shadow: 0 0 1.25rem #00fff7;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+.btn-box {
+    display: inline-block;               /* biar bisa ditengah pakai margin auto */
+    padding: 0.75rem 1.75rem;
+    background: rgb(95,34,155);
+    border-radius: 2.5rem;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: 0.125rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 1rem auto 0;          /* auto = tengah horizontal */
+    text-align: center;
+    width: fit-content;           /* biar lebarnya menyesuaikan teks */
+}
+
+.btn-box:hover {
+    background: #00fff7;
+    color: #000;
+    box-shadow: 0 0 0.25rem cyan, 0 0 1.25rem cyan, 0 0 0.9375rem cyan, 0 0 0.9375rem cyan;
+}
+
+.btn-box:hover {
+    background: #00fff7;
+    color: #000;
+    box-shadow: 0 0 0.25rem cyan, 0 0 1.25rem cyan, 0 0 0.9375rem cyan, 0 0 0.9375rem cyan;
+}
+
+/* ==========================
+   ANIMATIONS
+========================== */
+@keyframes slideRight   { 0%{transform:translateX(-6.25rem);opacity:0}100%{transform:translateX(0);opacity:1} }
+@keyframes slideLeft    { 0%{transform:translateX(6.25rem);opacity:0}100%{transform:translateX(0);opacity:1} }
+@keyframes slideTop     { 0%{transform:translateY(6.25rem);opacity:0}100%{transform:translateY(0);opacity:1} }
+@keyframes slideBottom  { 0%{transform:translateY(-6.25rem);opacity:0}100%{transform:translateY(0);opacity:1} }
+@keyframes fadeInSlideUp{ 0%{opacity:0;transform:translateY(3.125rem)}100%{opacity:1;transform:translateY(0)} }
+
+/* ==========================
+   ABOUT SECTION
+========================== */
+.about {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    padding: 7.8125rem;
+    background-color: #00001f;
+    opacity: 0;
+    transform: translateY(3.125rem);
+    transition: opacity 1s ease, transform 1s ease;
+    flex-wrap: wrap;
+}
+
+.about.animate {
+    opacity: 1;
+    transform: translateY(0);
+    animation-delay: 0.5s;
+}
+
+.about-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-img img {
+    width: 18.75rem;
+    height: 17.5rem;
+    border-radius: 50%;
+    background: linear-gradient(45deg,#00fff7,#ff00f7);
+    padding: 0.3125rem;
+    box-shadow: 0 0 1.5625rem #fff;
+    transition: all 0.3s ease;
+    margin-right: 1.25rem;
+}
+
+.about-img img:hover {
+    background: linear-gradient(45deg,#ff00f7,#00fff7);
+    box-shadow: 0 0 1.875rem #00fff7,0 0 3.75rem #00fff7;
+}
+
+.about-text {
+    flex: 3;
+    color: #fff;
+    text-align: left;
+}
+
+.about-text h2 {
+    font-size: 2.25rem;
+    color: #00fff7;
+    font-weight: 700;
+    margin-bottom: 0.5rem;  /* jarak dari bawah */
+}
+
+.about-text p {
+    font-size: 1.1875rem;
+    color:#bbb;
+    line-height:1.6;
+    margin-bottom:1.25rem;
+}
+
+/* ==========================
+   SKILLS SECTION
+========================== */
+.skills {
+    padding: 7.8125rem;
+    background-color:#00001f;
+    text-align:center;
+}
+
+.skills-title h2 { font-size:2.25rem;color:#00fff7;margin-bottom:0.3125rem;font-weight:700; }
+.skills-title p  { font-size:1.25rem;color:#bbb;margin-bottom:0.3125rem; }
+
+.skills-list {
+    display:flex;
+    justify-content:center;
+    gap:1.875rem;
+    flex-wrap:wrap;
+    margin-top:1.875rem;
+}
+
+.skill {
+    width:9.375rem;
+    padding:1.875rem;
+    background-color:#03004f;
+    border-radius:0.625rem;
+    text-align:center;
+    box-shadow:0 0.25rem 1.25rem rgba(139,0,186,0.79);
+    opacity:0;
+    transform:translateY(3.125rem);
+    transition: all 0.3s ease;
+}
+
+.skill.visible { opacity:1; transform:translateY(0); }
+.skill:hover { transform:translateY(-0.625rem); box-shadow:0 0 1.875rem #00fff7; }
+.skill i { font-size:3.125rem;color:#00fff7;margin-bottom:0.9375rem; }
+.skill h3{ font-size:1.125rem;color:#fff;font-weight:600; }
+
+/* ==========================
+   FOOTER & CONTACT
+========================== */
+.footer {
+    background-color: #121111;
+    padding:1.25rem 0;
+    text-align:center;
+    color:#fff;
+    font-size: 0.9rem;
+}
+
+.contact {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:3rem;
+    padding:3.125rem 1.875rem;
+    align-items:center;
+    background:#00001f;
+}
+
+.contact-text h2 { 
+    font-size:3rem; 
+    line-height:1; 
+    text-align: center;
+    color:#fff; 
+}
+
+.contact-text h2 span { color:#00fff7; }
+.contact-text h4 { 
+    margin:0.3rem 0 2rem; 
+    color:#fff; 
+    font-size:1.25rem;
+    text-align: center; 
+}
+.contact-text p { color:#fff; font-size:1.25rem; line-height:1.875rem; margin-bottom:1rem; }
+
+.contact-list li { font-size:1.125rem; margin-bottom:1rem; display:flex; align-items:center; gap:1rem; }
+.contact-list li i { font-size:1.5rem; color:#00fff7; }
+
+.contact-social a { 
+    font-size:1.875rem; 
+    color:#00fff7; 
+    transition:0.3s; 
+    text-decoration: none;   /* ✅ hapus garis bawah */
+}
+
+.contact-social a:hover { 
+    color:#ff00f7; 
+}
+
+.contact-form form input,
+.contact-form form textarea {
+    border:none;
+    outline:none;
+    padding:1.125rem;
+    background:#e2e1e1;
+    color:black;
+    font-size:1rem;
+    font-weight:600;
+    border-radius:0.5rem;
+    width:100%;
+    margin-bottom: 1rem; /* ✅ jarak antar kolom/form field */
+}
+.contact-form form textarea { resize:none; height:13.75rem; }
+.contact-form form .send {
+    display:inline-block;
+    padding:0.875rem 3.75rem;
+    background:rgb(95,34,155);
+    border-radius:2.5rem;
+    font-size:1.125rem;
+    color:#fff;
+    font-weight:600;
+    letter-spacing:1px;
+    text-decoration:none;
+    width:100%;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+.contact-form form .send:hover {
+    background:#00fff7;
+    color:#000;
+    box-shadow:0 0 0.3125rem cyan,0 0 0.9375rem cyan,0 0 0.9375rem cyan,0 0 0.9375rem cyan;
+    gap: 1rem; /* ✅ tambahan spacing seragam antar elemen */
+}
+
+/* ==========================
+   MEDIA QUERY
+========================== */
+
+/* --- Laptop sedang --- */
+@media (max-width: 1024px) {
+    html { font-size: 14px; }
+
+    .navbar {
+        justify-content: center;
+        flex-wrap: nowrap; /* tetap satu baris */
+        gap: 1.3rem;
+    }
+
+    .navbar a {
+        font-size: 1rem;
+        margin-left: 0; /* rapikan jarak */
+    }
+    
+}
+
+/* --- Tablet --- */
+@media (max-width: 768px) {
+    html { font-size: 13px; }
+
+    /* Navbar tetap horizontal */
+    .navbar {
+        display: flex;
+        justify-content: center;  /* di tengah */
+        align-items: center;
+        flex-wrap: nowrap;        /* tetap sejajar mendatar */
+        gap: 1rem;             /* kurangi jarak antar item */
+    }
+
+    .navbar a {
+        font-size: 1rem;        /* kecilkan teks */
+        margin-left: 0;           /* hapus margin kiri besar */
+    }
+
+    /* Section lainnya */
+    .home {
+        flex-direction: column;
+        padding: 4rem 5%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .text-content { text-align: center; }
+
+    .profile-img {
+        width: 12rem;
+        height: 12rem;
+        margin-left: 0;
+    }
+
+    .about {
+        flex-direction: column;
+        padding: 2rem 5%;
+    }
+
+    .about-img img {
+        width: 14rem;
+        height: 14rem;
+        margin: 0 auto 1rem;
+    }
+
+    .contact-text h2 {
+        font-size: 3rem;
+    }
+
+    .contact-text h4 {
+        font-size: 1.1rem;
+    }
+}
+
+/* --- Handphone --- */
+@media (max-width: 480px) {
+    html { font-size: 12px; }
+
+    /* Navbar tetap sejajar horizontal */
+    .navbar {
+        justify-content: center;
+        flex-wrap: nowrap;  /* jangan turun ke bawah */
+        gap: 1rem;        /* jarak antar teks kecil */
+    }
+
+    .navbar a {
+        font-size: 0.9rem;  /* kecil tapi masih terbaca */
+        margin-left: 0;
+    }
+
+    .contact-text h2 { 
+        font-size: 2rem; 
+    }
+    
+    .contact-text h4 { font-size: 0.9rem; }
+}
+
